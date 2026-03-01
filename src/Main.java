@@ -18,17 +18,19 @@ public class Main {
             System.out.println("6. Show Current Page");
             System.out.println("7. Show Visit Statistics");
             System.out.println("8. Show All Tabs");
-            System.out.println("9. Exit");
+            System.out.println("9. Undo");
+            System.out.println("10. Redo");
+            System.out.println("11. Exit");
             System.out.print("Enter your choice: ");
 
             if (!scanner.hasNextInt()) {
-                System.out.println("Invalid input. Enter a number.");
+                System.out.println("Invalid input.");
                 scanner.next();
                 continue;
             }
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            scanner.nextLine();
 
             switch (choice) {
 
@@ -67,12 +69,20 @@ public class Main {
                     break;
 
                 case 9:
+                    browser.undo();
+                    break;
+
+                case 10:
+                    browser.redo();
+                    break;
+
+                case 11:
                     System.out.println("Exiting Browser...");
                     scanner.close();
                     System.exit(0);
 
                 default:
-                    System.out.println("Invalid choice. Try again.");
+                    System.out.println("Invalid choice.");
             }
         }
     }
